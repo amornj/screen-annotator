@@ -39,7 +39,7 @@ Click the toolbar icon to activate the annotation overlay. Click again to toggle
 | `Arrow Up` / `Arrow Down` | Increase / decrease line width |
 | `Cmd/Ctrl+Z` | Undo |
 | `Cmd/Ctrl+Y` | Redo |
-| `Alt` (hold) | Pass-through to page (scroll, click links) |
+| `Alt` / `Option` (hold) | Pass-through to page (scroll, click links) |
 | `Escape` | Exit — prompts to save screenshot |
 
 ### Text Tool

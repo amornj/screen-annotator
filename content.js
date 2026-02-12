@@ -483,6 +483,10 @@
   });
 
   // ─── Help popup ────────────────────────────────────────────────────
+  const isMac = navigator.platform.indexOf("Mac") !== -1;
+  const modKey = isMac ? "Cmd" : "Ctrl";
+  const altKey = isMac ? "Option" : "Alt";
+
   function showHelpPopup() {
     if (document.getElementById("annotate-help")) return;
 
@@ -503,10 +507,10 @@
           <tr><td><kbd>3</kbd></td><td><span class="annotate-swatch" style="background:#16a34a"></span> Green</td></tr>
           <tr><td><kbd>4</kbd></td><td><span class="annotate-swatch" style="background:#eab308"></span> Yellow</td></tr>
           <tr><th colspan="2">Other</th></tr>
-          <tr><td><kbd>&uarr;</kbd> <kbd>&darr;</kbd></td><td>Line width</td></tr>
-          <tr><td><kbd>Cmd/Ctrl+Z</kbd></td><td>Undo</td></tr>
-          <tr><td><kbd>Cmd/Ctrl+Y</kbd></td><td>Redo</td></tr>
-          <tr><td><kbd>Alt</kbd> hold</td><td>Click through</td></tr>
+          <tr><td><kbd>&uarr;</kbd> <kbd>&darr;</kbd></td><td>Line width / font size</td></tr>
+          <tr><td><kbd>${modKey}+Z</kbd></td><td>Undo</td></tr>
+          <tr><td><kbd>${modKey}+Y</kbd></td><td>Redo</td></tr>
+          <tr><td><kbd>${altKey}</kbd> hold</td><td>Click through</td></tr>
           <tr><td><kbd>Esc</kbd></td><td>Exit</td></tr>
         </table>
         <div class="annotate-help-hint">Click anywhere to dismiss</div>

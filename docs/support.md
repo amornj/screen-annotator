@@ -30,7 +30,7 @@
 | `Arrow Up` / `Arrow Down` | Increase / decrease line width |
 | `Cmd/Ctrl+Z` | Undo |
 | `Cmd/Ctrl+Y` | Redo |
-| `Alt` (hold) | Pass-through to page (scroll, click links) |
+| `Alt` / `Option` (hold) | Pass-through to page (scroll, click links) |
 | `Escape` | Exit — prompts to save screenshot |
 
 Click the floating indicator icon to see shortcuts at any time.
@@ -60,7 +60,7 @@ Make sure you're not on a restricted page (`chrome://` pages, the Chrome Web Sto
 The extension automatically scales for high-DPI displays. If you still see blurriness, try reloading the page and reactivating the extension.
 
 **Can I annotate while scrolling?**
-Hold the **Alt** key to temporarily pass mouse and scroll events through to the page. Release Alt to resume annotating.
+Hold the **Alt** key (**Option** on Mac) to temporarily pass mouse and scroll events through to the page. Release to resume annotating.
 
 **Where are my screenshots saved?**
 Screenshots are saved to your default downloads folder with the filename `annotate-YYYY-MM-DD-HHmmss.png` and also copied to your clipboard.
