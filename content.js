@@ -247,7 +247,7 @@
   }
 
   // ─── Text tool ───────────────────────────────────────────────────────
-  const fontSize = 18;
+  let fontSize = 18;
 
   function startTextInput(x, y) {
     if (textEditing) commitText();
@@ -267,7 +267,7 @@
     textEditing = true;
     activeTextEl = el;
 
-    // Enter/Escape to confirm, Shift+Enter for newline
+    // Enter/Escape to confirm, Shift+Enter for newline, ArrowUp/Down for font size
     el.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
@@ -275,6 +275,14 @@
       } else if (e.key === "Escape") {
         e.preventDefault();
         commitText();
+      } else if (e.key === "ArrowUp" && e.altKey) {
+        e.preventDefault();
+        fontSize = Math.min(fontSize + 2, 72);
+        el.style.fontSize = fontSize + "px";
+      } else if (e.key === "ArrowDown" && e.altKey) {
+        e.preventDefault();
+        fontSize = Math.max(fontSize - 2, 8);
+        el.style.fontSize = fontSize + "px";
       }
       e.stopPropagation(); // suppress tool shortcuts while typing
     });
@@ -376,14 +384,22 @@
         case "4":
           setColor("#eab308");
           break;
-        // Line width
+        // Line width (or font size in text mode)
         case "arrowup":
-          lineWidth = Math.min(lineWidth + 1, 20);
-          updateIndicatorWidth();
+          if (tool === "text") {
+            fontSize = Math.min(fontSize + 2, 72);
+          } else {
+            lineWidth = Math.min(lineWidth + 1, 20);
+            updateIndicatorWidth();
+          }
           break;
         case "arrowdown":
-          lineWidth = Math.max(lineWidth - 1, 1);
-          updateIndicatorWidth();
+          if (tool === "text") {
+            fontSize = Math.max(fontSize - 2, 8);
+          } else {
+            lineWidth = Math.max(lineWidth - 1, 1);
+            updateIndicatorWidth();
+          }
           break;
         case "escape":
           showExitDialog();
