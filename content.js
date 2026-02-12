@@ -279,10 +279,12 @@
         e.preventDefault();
         fontSize = Math.min(fontSize + 2, 72);
         el.style.fontSize = fontSize + "px";
+        updateIndicatorWidth();
       } else if (e.key === "ArrowDown" && e.altKey) {
         e.preventDefault();
         fontSize = Math.max(fontSize - 2, 8);
         el.style.fontSize = fontSize + "px";
+        updateIndicatorWidth();
       }
       e.stopPropagation(); // suppress tool shortcuts while typing
     });
@@ -390,16 +392,16 @@
             fontSize = Math.min(fontSize + 2, 72);
           } else {
             lineWidth = Math.min(lineWidth + 1, 20);
-            updateIndicatorWidth();
           }
+          updateIndicatorWidth();
           break;
         case "arrowdown":
           if (tool === "text") {
             fontSize = Math.max(fontSize - 2, 8);
           } else {
             lineWidth = Math.max(lineWidth - 1, 1);
-            updateIndicatorWidth();
           }
+          updateIndicatorWidth();
           break;
         case "escape":
           showExitDialog();
@@ -444,6 +446,7 @@
     tool = t;
     indicator.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[tool]}</svg>`;
     canvas.style.cursor = tool === "text" ? "text" : "crosshair";
+    updateIndicatorWidth();
   }
 
   function setColor(c) {
@@ -456,7 +459,9 @@
   }
 
   function updateIndicatorWidth() {
-    indicator.style.setProperty("--annotate-width", lineWidth);
+    // Map fontSize (8–72) to a similar visual range as lineWidth (1–20)
+    const val = tool === "text" ? (fontSize - 8) / 64 * 19 + 1 : lineWidth;
+    indicator.style.setProperty("--annotate-width", val);
   }
 
   // ─── Indicator drag + click ──────────────────────────────────────────
