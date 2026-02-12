@@ -65,14 +65,16 @@
   stroke-linejoin: round;
 }
 
-/* Color swatch ring on indicator */
+/* Color + width ring on indicator — border and glow scale with --annotate-width */
 #annotate-indicator::after {
   content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 13px;
-  border: 2px solid var(--annotate-color, #ff0000);
+  inset: calc(-2px - var(--annotate-width, 3) * 0.3px);
+  border-radius: calc(12px + var(--annotate-width, 3) * 0.3px);
+  border: calc(1.5px + var(--annotate-width, 3) * 0.15px) solid var(--annotate-color, #ff0000);
+  box-shadow: 0 0 calc(var(--annotate-width, 3) * 0.8px) calc(var(--annotate-width, 3) * 0.3px) var(--annotate-color, #ff0000);
   pointer-events: none;
+  transition: all 0.15s ease;
 }
 
 /* Text input (contenteditable div) */

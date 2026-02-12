@@ -49,6 +49,7 @@
   indicator.innerHTML = `<svg viewBox="0 0 24 24">${ICONS[tool]}</svg>`;
   root.appendChild(indicator);
   updateIndicatorColor();
+  updateIndicatorWidth();
 
   document.documentElement.appendChild(root);
   sizeCanvas();
@@ -266,18 +267,22 @@
     textEditing = true;
     activeTextEl = el;
 
-    // Enter to confirm, Shift+Enter for newline
+    // Enter/Escape to confirm, Shift+Enter for newline
     el.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        commitText();
+      } else if (e.key === "Escape") {
         e.preventDefault();
         commitText();
       }
       e.stopPropagation(); // suppress tool shortcuts while typing
     });
 
-    // Click outside text to confirm
+    // Click outside text to confirm (and swallow the event so canvas doesn't start a new text input)
     function onClickOutside(e) {
       if (!el.contains(e.target)) {
+        e.stopPropagation();
         commitText();
         document.removeEventListener("mousedown", onClickOutside, true);
       }
@@ -372,12 +377,13 @@
           setColor("#eab308");
           break;
         // Line width
-        case "=":
-        case "+":
+        case "arrowup":
           lineWidth = Math.min(lineWidth + 1, 20);
+          updateIndicatorWidth();
           break;
-        case "-":
+        case "arrowdown":
           lineWidth = Math.max(lineWidth - 1, 1);
+          updateIndicatorWidth();
           break;
         case "escape":
           showExitDialog();
@@ -427,6 +433,10 @@
 
   function updateIndicatorColor() {
     indicator.style.setProperty("--annotate-color", color);
+  }
+
+  function updateIndicatorWidth() {
+    indicator.style.setProperty("--annotate-width", lineWidth);
   }
 
   // ─── Indicator drag ──────────────────────────────────────────────────

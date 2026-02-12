@@ -36,7 +36,7 @@ Click the toolbar icon to activate the annotation overlay. Click again to toggle
 
 | Key | Action |
 |-----|--------|
-| `+` / `-` | Increase / decrease line width |
+| `Arrow Up` / `Arrow Down` | Increase / decrease line width |
 | `Cmd/Ctrl+Z` | Undo |
 | `Cmd/Ctrl+Y` | Redo |
 | `Alt` (hold) | Pass-through to page (scroll, click links) |
@@ -46,9 +46,10 @@ Click the toolbar icon to activate the annotation overlay. Click again to toggle
 
 - Click to place text
 - Type your annotation
-- **Enter** to confirm
+- **Enter** or **Escape** to confirm
 - **Shift+Enter** for a new line
 - Click outside to confirm
+- After confirming, all shortcuts (D/A/C/T, 1-4, Escape) work immediately
 
 ### Screenshot
 
