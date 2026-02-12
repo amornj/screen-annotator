@@ -439,19 +439,22 @@
     indicator.style.setProperty("--annotate-width", lineWidth);
   }
 
-  // ─── Indicator drag ──────────────────────────────────────────────────
+  // ─── Indicator drag + click ──────────────────────────────────────────
   let indDrag = false;
+  let indMoved = false;
   let indOff = { x: 0, y: 0 };
 
   indicator.addEventListener("mousedown", (e) => {
     e.stopPropagation();
     indDrag = true;
+    indMoved = false;
     indOff.x = e.clientX - indicator.getBoundingClientRect().left;
     indOff.y = e.clientY - indicator.getBoundingClientRect().top;
   });
 
   document.addEventListener("mousemove", (e) => {
     if (!indDrag) return;
+    indMoved = true;
     indicator.style.left = e.clientX - indOff.x + "px";
     indicator.style.top = e.clientY - indOff.y + "px";
     indicator.style.right = "auto";
@@ -459,8 +462,52 @@
   });
 
   document.addEventListener("mouseup", () => {
+    if (indDrag && !indMoved) showHelpPopup();
     indDrag = false;
   });
+
+  // ─── Help popup ────────────────────────────────────────────────────
+  function showHelpPopup() {
+    if (document.getElementById("annotate-help")) return;
+
+    const help = document.createElement("div");
+    help.id = "annotate-help";
+    help.innerHTML = `
+      <div id="annotate-help-box">
+        <div class="annotate-help-title">Annotate — Shortcuts</div>
+        <table class="annotate-help-table">
+          <tr><th colspan="2">Tools</th></tr>
+          <tr><td><kbd>D</kbd></td><td>Draw</td></tr>
+          <tr><td><kbd>A</kbd></td><td>Arrow</td></tr>
+          <tr><td><kbd>C</kbd></td><td>Circle</td></tr>
+          <tr><td><kbd>T</kbd></td><td>Text</td></tr>
+          <tr><th colspan="2">Colors</th></tr>
+          <tr><td><kbd>1</kbd></td><td><span class="annotate-swatch" style="background:#ff0000"></span> Red</td></tr>
+          <tr><td><kbd>2</kbd></td><td><span class="annotate-swatch" style="background:#2563eb"></span> Blue</td></tr>
+          <tr><td><kbd>3</kbd></td><td><span class="annotate-swatch" style="background:#16a34a"></span> Green</td></tr>
+          <tr><td><kbd>4</kbd></td><td><span class="annotate-swatch" style="background:#eab308"></span> Yellow</td></tr>
+          <tr><th colspan="2">Other</th></tr>
+          <tr><td><kbd>&uarr;</kbd> <kbd>&darr;</kbd></td><td>Line width</td></tr>
+          <tr><td><kbd>Cmd/Ctrl+Z</kbd></td><td>Undo</td></tr>
+          <tr><td><kbd>Cmd/Ctrl+Y</kbd></td><td>Redo</td></tr>
+          <tr><td><kbd>Alt</kbd> hold</td><td>Click through</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>Exit</td></tr>
+        </table>
+        <div class="annotate-help-hint">Click anywhere to dismiss</div>
+      </div>
+    `;
+    root.appendChild(help);
+
+    // Click anywhere to dismiss
+    function dismiss(e) {
+      e.stopPropagation();
+      help.remove();
+      document.removeEventListener("mousedown", dismiss, true);
+    }
+    setTimeout(() => {
+      document.addEventListener("mousedown", dismiss, true);
+    }, 0);
+  }
 
   // ─── Exit dialog ─────────────────────────────────────────────────────
   function showExitDialog() {

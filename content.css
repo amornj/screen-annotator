@@ -77,6 +77,128 @@
   transition: all 0.15s ease;
 }
 
+/* Help popup */
+#annotate-help {
+  all: initial;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2147483647;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+#annotate-help-box {
+  all: initial;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  color: #e0e0e0;
+  line-height: 1.5;
+  min-width: 220px;
+}
+
+.annotate-help-title {
+  all: initial;
+  display: block;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.annotate-help-table {
+  all: initial;
+  display: table;
+  font-family: inherit;
+  font-size: 13px;
+  color: #e0e0e0;
+  line-height: 1.5;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.annotate-help-table th {
+  all: initial;
+  display: table-cell;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 0 4px;
+  line-height: 1.5;
+}
+
+.annotate-help-table tr {
+  all: initial;
+  display: table-row;
+}
+
+.annotate-help-table td {
+  all: initial;
+  display: table-cell;
+  font-family: inherit;
+  font-size: 13px;
+  color: #e0e0e0;
+  padding: 3px 0;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.annotate-help-table td:first-child {
+  padding-right: 16px;
+  white-space: nowrap;
+}
+
+.annotate-help-table kbd {
+  all: initial;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 11px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 1px 6px;
+  line-height: 1.6;
+}
+
+.annotate-swatch {
+  all: initial;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.annotate-help-hint {
+  all: initial;
+  display: block;
+  font-family: inherit;
+  font-size: 11px;
+  color: #666;
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
 /* Text input (contenteditable div) */
 #annotate-root .annotate-text-input {
   all: initial;
