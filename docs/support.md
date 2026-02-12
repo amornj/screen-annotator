@@ -27,10 +27,10 @@
 ### Other
 | Key | Action |
 |-----|--------|
-| `Arrow Up` / `Arrow Down` | Increase / decrease line width |
+| `Arrow Up` / `Arrow Down` | Line width (or font size in text mode) |
 | `Cmd/Ctrl+Z` | Undo |
 | `Cmd/Ctrl+Y` | Redo |
-| `Alt` / `Option` (hold) | Pass-through to page (scroll, click links) |
+| `Alt` / `Option` (hold) | Click-through to page (cursor changes to default) |
 | `Escape` | Exit — prompts to save screenshot |
 
 Click the floating indicator icon to see shortcuts at any time.
@@ -42,8 +42,11 @@ Click the floating indicator icon to see shortcuts at any time.
 - Type your annotation
 - Press **Enter** or **Escape** to confirm
 - Press **Shift+Enter** for a new line
+- Press **Alt/Option + Arrow Up/Down** to resize font while typing
+- Press **Arrow Up/Down** to resize font when not typing
 - Click outside the text box to confirm
 - After confirming, all shortcuts work immediately
+- The floating indicator border reflects the current font size
 
 ## Saving Your Work
 

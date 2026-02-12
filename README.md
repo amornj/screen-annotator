@@ -36,10 +36,10 @@ Click the toolbar icon to activate the annotation overlay. Click again to toggle
 
 | Key | Action |
 |-----|--------|
-| `Arrow Up` / `Arrow Down` | Increase / decrease line width |
+| `Arrow Up` / `Arrow Down` | Line width (or font size in text mode) |
 | `Cmd/Ctrl+Z` | Undo |
 | `Cmd/Ctrl+Y` | Redo |
-| `Alt` / `Option` (hold) | Pass-through to page (scroll, click links) |
+| `Alt` / `Option` (hold) | Click-through to page (cursor changes to default) |
 | `Escape` | Exit — prompts to save screenshot |
 
 ### Text Tool
@@ -48,6 +48,8 @@ Click the toolbar icon to activate the annotation overlay. Click again to toggle
 - Type your annotation
 - **Enter** or **Escape** to confirm
 - **Shift+Enter** for a new line
+- **Alt/Option + Arrow Up/Down** to resize font while typing
+- **Arrow Up/Down** to resize font when not typing
 - Click outside to confirm
 - After confirming, all shortcuts (D/A/C/T, 1-4, Escape) work immediately
 
