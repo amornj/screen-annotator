@@ -420,6 +420,8 @@
     (e) => {
       if (e.key === "Alt" && !textEditing) {
         root.style.pointerEvents = "none";
+        root.style.cursor = "default";
+        canvas.style.cursor = "default";
       }
     },
     true
@@ -429,6 +431,8 @@
     (e) => {
       if (e.key === "Alt") {
         root.style.pointerEvents = "";
+        root.style.cursor = "";
+        canvas.style.cursor = tool === "text" ? "text" : "crosshair";
       }
     },
     true
