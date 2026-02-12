@@ -1,0 +1,67 @@
+# Annotate
+
+Minimal, keyboard-driven Chrome extension for on-screen annotation. Zero dependencies, no build step. Manifest V3.
+
+## Install
+
+1. Clone this repo
+2. Open `chrome://extensions`
+3. Enable **Developer mode**
+4. Click **Load unpacked** → select this folder
+5. Click the extension icon on any page to start annotating
+
+## Usage
+
+Click the toolbar icon to activate the annotation overlay. Click again to toggle off.
+
+### Tools
+
+| Key | Tool |
+|-----|------|
+| `D` | Freehand draw |
+| `A` | Arrow |
+| `C` | Circle / Ellipse |
+| `T` | Text |
+
+### Colors
+
+| Key | Color |
+|-----|-------|
+| `1` | Red |
+| `2` | Blue |
+| `3` | Green |
+| `4` | Yellow |
+
+### Other Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `+` / `-` | Increase / decrease line width |
+| `Cmd/Ctrl+Z` | Undo |
+| `Cmd/Ctrl+Y` | Redo |
+| `Alt` (hold) | Pass-through to page (scroll, click links) |
+| `Escape` | Exit — prompts to save screenshot |
+
+### Text Tool
+
+- Click to place text
+- Type your annotation
+- **Enter** to confirm
+- **Shift+Enter** for a new line
+- Click outside to confirm
+
+### Screenshot
+
+When you press Escape, a dialog asks "Save screenshot before closing?":
+- **Yes** — captures the page with your annotations, copies to clipboard, and downloads as `annotate-YYYY-MM-DD-HHmmss.png`
+- **No** — closes the overlay without saving
+
+## File Structure
+
+```
+manifest.json   — MV3 config (activeTab + scripting)
+background.js   — Service worker: inject on icon click, captureVisibleTab relay
+content.js      — Canvas overlay, tools, keyboard shortcuts, undo/redo, screenshot
+content.css     — Overlay and UI styles (CSS-isolated from host page)
+icons/          — Extension icons
+```
