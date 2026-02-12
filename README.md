@@ -12,7 +12,7 @@ Minimal, keyboard-driven Chrome extension for on-screen annotation. Zero depende
 
 ## Usage
 
-Click the toolbar icon to activate the annotation overlay. Click again to toggle off.
+Click the toolbar icon to activate the annotation overlay. Click again to toggle off. Click the floating indicator for a quick shortcut reference.
 
 ### Tools
 
@@ -57,6 +57,13 @@ When you press Escape, a dialog asks "Save screenshot before closing?":
 - **Yes** — captures the page with your annotations, copies to clipboard, and downloads as `annotate-YYYY-MM-DD-HHmmss.png`
 - **No** — closes the overlay without saving
 
+## Documentation
+
+- [Support](docs/support.md) — shortcuts, usage guide, and FAQ
+- [Privacy Policy](docs/privacy-policy.md) — no data collection, fully local
+
+HTML versions are available in the `docs/` folder for web hosting.
+
 ## File Structure
 
 ```
@@ -65,4 +72,5 @@ background.js   — Service worker: inject on icon click, captureVisibleTab rela
 content.js      — Canvas overlay, tools, keyboard shortcuts, undo/redo, screenshot
 content.css     — Overlay and UI styles (CSS-isolated from host page)
 icons/          — Extension icons
+docs/           — Support, privacy policy (md + html)
 ```
