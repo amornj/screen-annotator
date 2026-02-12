@@ -12,6 +12,11 @@ chrome.action.onClicked.addListener(async (tab) => {
     return;
   }
 
+  // Skip restricted pages
+  if (tab.url && (tab.url.startsWith("chrome://") || tab.url.startsWith("chrome-extension://") || tab.url.startsWith("https://chromewebstore.google.com"))) {
+    return;
+  }
+
   // Inject CSS then JS
   try {
     await chrome.scripting.insertCSS({
@@ -23,8 +28,8 @@ chrome.action.onClicked.addListener(async (tab) => {
       files: ["content.js"],
     });
     activeTabs.add(tab.id);
-  } catch (e) {
-    console.error("Annotate: injection failed", e);
+  } catch (_) {
+    // Injection not allowed on this page
   }
 });
 
